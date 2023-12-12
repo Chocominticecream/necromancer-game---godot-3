@@ -1,0 +1,164 @@
+{
+	"sheets": [
+		{
+			"name": "summon_data",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "ID"
+				},
+				{
+					"typeStr": "3",
+					"name": "numID"
+				},
+				{
+					"typeStr": "1",
+					"name": "printedName",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "hp"
+				},
+				{
+					"typeStr": "3",
+					"name": "attack"
+				},
+				{
+					"typeStr": "3",
+					"name": "energyCost"
+				},
+				{
+					"typeStr": "1",
+					"name": "description",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "effect",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"energyCost": 1,
+					"hp": 1,
+					"attack": 1,
+					"description": "An ordinary run of the mill zombie",
+					"effect": [],
+					"printedName": "Zombie",
+					"ID": "zombie",
+					"numID": 0
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "summon_data@effect",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": []
+		},
+		{
+			"name": "spell_sheet",
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "ID"
+				},
+				{
+					"typeStr": "3",
+					"name": "numID"
+				},
+				{
+					"typeStr": "1",
+					"name": "printedName",
+					"display": null
+				},
+				{
+					"typeStr": "3",
+					"name": "energyCost"
+				},
+				{
+					"typeStr": "1",
+					"name": "description",
+					"display": null
+				},
+				{
+					"typeStr": "8",
+					"name": "effect",
+					"display": null
+				}
+			],
+			"lines": [
+				{
+					"ID": "DarkSword",
+					"printedName": "Slash",
+					"energyCost": 1,
+					"description": "Slash at an enemy with your dark sword",
+					"effect": [
+						{
+							"effectID": "damage",
+							"value": 5
+						}
+					],
+					"numID": 0
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "spell_sheet@effect",
+			"props": {
+				"hide": true
+			},
+			"separators": [],
+			"lines": [],
+			"columns": [
+				{
+					"typeStr": "0",
+					"name": "effectID"
+				},
+				{
+					"typeStr": "3",
+					"name": "value"
+				}
+			]
+		},
+		{
+			"name": "spell_effect_sheet",
+			"columns": [
+				{
+					"typeStr": "1",
+					"name": "effectName"
+				},
+				{
+					"typeStr": "1",
+					"name": "description"
+				}
+			],
+			"lines": [
+				{
+					"effectName": "damage",
+					"description": "Deal [...] damage"
+				}
+			],
+			"separators": [],
+			"props": {}
+		},
+		{
+			"name": "summon_effect_sheet",
+			"columns": [],
+			"lines": [],
+			"separators": [],
+			"props": {}
+		}
+	],
+	"customTypes": [],
+	"compress": false
+}

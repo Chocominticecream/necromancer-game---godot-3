@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://assets/fonts/Basecard.tres" type="DynamicFont" id=1]
+
+[node name="textView" type="Spatial"]
+
+[node name="Desc" type="Label3D" parent="."]
+transform = Transform( 0.072825, -0.0373404, 0.996645, -0.0207433, 0.999026, 0.0389453, -0.997129, -0.0235099, 0.0719795, 0, 0, 0 )
+modulate = Color( 0.054902, 0.054902, 0.054902, 1 )
+text = "Very long text wall for testing purposes among other things!"
+font = ExtResource( 1 )
+autowrap = true
+
+[node name="Camera" type="Camera" parent="Desc"]
+transform = Transform( 0.99498, -0.0207433, -0.0979065, 0.0168133, 0.999026, -0.0407962, 0.0986574, 0.0389453, 0.994359, 2.93685, -3.28045, 7.4564 )

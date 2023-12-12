@@ -1,0 +1,10 @@
+extends Resource
+class_name Enemyinfo
+
+export var staticdeck = []
+export var health = 0
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+    pass # Replace with function body.
+

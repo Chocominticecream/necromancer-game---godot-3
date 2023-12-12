@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://scenes/widgets/defunct1.gd" type="Script" id=1]
+[ext_resource path="res://assets/placeholders/square-rounded-512.png" type="Texture" id=2]
+[ext_resource path="res://assets/placeholders/circle-512.png" type="Texture" id=3]
+
+[sub_resource type="Shader" id=4]
+code = "shader_type canvas_item;
+
+uniform sampler2D mask;
+
+void fragment(){
+   COLOR = texture(TEXTURE, UV);
+   
+   vec2 muv = UV;
+   muv.y = 1.0 - muv.y;
+   COLOR.a = texture(mask,muv).r;
+   }"
+
+[sub_resource type="ShaderMaterial" id=5]
+shader = SubResource( 4 )
+shader_param/mask = ExtResource( 2 )
+
+[node name="defunct" type="Node2D"]
+
+[node name="basecard" type="Node" parent="."]
+script = ExtResource( 1 )
+
+[node name="TransparentMask" type="ViewportContainer" parent="basecard"]
+material = SubResource( 5 )
+margin_left = -235.0
+margin_top = -210.0
+margin_right = 235.0
+margin_bottom = 50.0
+mouse_filter = 2
+stretch = true
+
+[node name="Viewport" type="Viewport" parent="basecard/TransparentMask"]
+size = Vector2( 1024, 1024 )
+handle_input_locally = false
+render_target_update_mode = 3
+
+[node name="image" type="Node2D" parent="basecard/TransparentMask/Viewport"]
+
+[node name="Sprite" type="Sprite" parent="basecard/TransparentMask/Viewport/image"]
+self_modulate = Color( 0.188235, 0.823529, 0.0980392, 1 )
+texture = ExtResource( 3 )

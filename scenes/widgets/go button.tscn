@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/clickmasks/triangleclickmask.bmp" type="BitMap" id=1]
+[ext_resource path="res://scenes/widgets/go button.gd" type="Script" id=2]
+[ext_resource path="res://assets/placeholders/trianglegrey.png" type="Texture" id=3]
+[ext_resource path="res://assets/placeholders/triangleblack.png" type="Texture" id=4]
+[ext_resource path="res://assets/fonts/roboto.tres" type="DynamicFont" id=5]
+
+[node name="go button" type="Control"]
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="goclick" type="TextureButton" parent="."]
+margin_left = 1919.0
+margin_top = 412.0
+margin_right = 2431.0
+margin_bottom = 924.0
+rect_rotation = 90.0
+rect_scale = Vector2( 0.5, 0.5 )
+mouse_filter = 1
+texture_normal = ExtResource( 4 )
+texture_pressed = ExtResource( 3 )
+texture_hover = ExtResource( 3 )
+texture_click_mask = ExtResource( 1 )
+
+[node name="golabel" type="RichTextLabel" parent="goclick"]
+margin_left = 176.0
+margin_top = 416.0
+margin_right = 420.0
+margin_bottom = 569.0
+rect_rotation = 270.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 5 )
+text = "Go!"
+
+[connection signal="mouse_entered" from="goclick" to="." method="_on_goclick_mouse_entered"]
+[connection signal="mouse_exited" from="goclick" to="." method="_on_goclick_mouse_exited"]

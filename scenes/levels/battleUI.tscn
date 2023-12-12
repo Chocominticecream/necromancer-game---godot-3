@@ -1,0 +1,281 @@
+[gd_scene load_steps=21 format=2]
+
+[ext_resource path="res://UIfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/fonts/roboto.tres" type="DynamicFont" id=2]
+[ext_resource path="res://assets/placeholders/square-rounded-512.png" type="Texture" id=3]
+[ext_resource path="res://scenes/levels/hand.gd" type="Script" id=4]
+[ext_resource path="res://scenes/widgets/cardslotSummon.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/placeholders/triangle-512.png" type="Texture" id=6]
+[ext_resource path="res://scenes/levels/battleUI.gd" type="Script" id=7]
+[ext_resource path="res://assets/placeholders/trianglegrey.png" type="Texture" id=8]
+[ext_resource path="res://scenes/widgets/go button.tscn" type="PackedScene" id=9]
+[ext_resource path="res://assets/clickmasks/triangleclickmask.bmp" type="BitMap" id=10]
+[ext_resource path="res://scenes/levels/decks.gd" type="Script" id=11]
+[ext_resource path="res://scenes/widgets/FPS counter.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/placeholders/square-128.png" type="Texture" id=14]
+[ext_resource path="res://assets/placeholders/circle-512.png" type="Texture" id=15]
+[ext_resource path="res://scenes/levels/hero.gd" type="Script" id=16]
+[ext_resource path="res://scenes/levels/enemy.gd" type="Script" id=17]
+[ext_resource path="res://scenes/levels/energy.gd" type="Script" id=18]
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.101961, 0.823529, 0.839216, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.101961, 0.823529, 0.839216, 1 )
+
+[node name="battleUI" type="Node2D"]
+script = ExtResource( 7 )
+
+[node name="cardslots" type="Node2D" parent="."]
+position = Vector2( 180, 0 )
+z_index = -1
+
+[node name="cardslotSummon" parent="cardslots" instance=ExtResource( 5 )]
+position = Vector2( 450, 700 )
+
+[node name="cardslotSummon2" parent="cardslots" instance=ExtResource( 5 )]
+position = Vector2( 680, 700 )
+
+[node name="cardslotSummon3" parent="cardslots" instance=ExtResource( 5 )]
+position = Vector2( 910, 700 )
+
+[node name="cardslotSummon4" parent="cardslots" instance=ExtResource( 5 )]
+position = Vector2( 1140, 700 )
+
+[node name="go_button" parent="." instance=ExtResource( 9 )]
+margin_left = 750.0
+margin_top = 500.0
+margin_right = 750.0
+margin_bottom = 500.0
+rect_scale = Vector2( 0.6, 0.6 )
+
+[node name="goTarget" type="Node2D" parent="go_button"]
+position = Vector2( 1756.67, 541.667 )
+
+[node name="lookdown" type="TextureButton" parent="."]
+visible = false
+anchor_right = 0.021
+anchor_bottom = 0.037
+margin_left = 1900.0
+margin_top = 1100.0
+margin_right = 2412.0
+margin_bottom = 1612.0
+rect_rotation = 180.0
+rect_scale = Vector2( 0.5, 0.3 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="lookup" type="TextureButton" parent="."]
+visible = false
+margin_left = 1650.0
+margin_top = 1260.0
+margin_right = 2162.0
+margin_bottom = 1772.0
+rect_scale = Vector2( 0.5, 0.3 )
+texture_normal = ExtResource( 6 )
+texture_pressed = ExtResource( 8 )
+texture_hover = ExtResource( 8 )
+texture_click_mask = ExtResource( 10 )
+
+[node name="decks" type="Node2D" parent="."]
+position = Vector2( 400, 230 )
+script = ExtResource( 11 )
+
+[node name="drawPile" type="Node2D" parent="decks"]
+position = Vector2( 1370, 830 )
+scale = Vector2( 0.35, 0.5 )
+z_index = 24
+
+[node name="Sprite" type="Sprite" parent="decks/drawPile"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="desc" type="RichTextLabel" parent="decks/drawPile"]
+margin_left = -150.0
+margin_top = 100.0
+margin_right = 183.0
+margin_bottom = 252.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Draw"
+text = "Draw"
+
+[node name="count" type="RichTextLabel" parent="decks/drawPile"]
+margin_left = -140.0
+margin_top = -100.0
+margin_right = 156.0
+margin_bottom = 205.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]0[/center]"
+text = "0"
+
+[node name="discardPile" type="Node2D" parent="decks"]
+position = Vector2( -250, 830 )
+scale = Vector2( 0.35, 0.5 )
+z_index = 24
+
+[node name="Sprite" type="Sprite" parent="decks/discardPile"]
+self_modulate = Color( 0, 0, 0, 1 )
+texture = ExtResource( 3 )
+
+[node name="desc" type="RichTextLabel" parent="decks/discardPile"]
+margin_left = -214.0
+margin_top = 100.0
+margin_right = 243.0
+margin_bottom = 260.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "Discard"
+text = "Discard"
+
+[node name="count" type="RichTextLabel" parent="decks/discardPile"]
+margin_left = -140.0
+margin_top = -100.0
+margin_right = 156.0
+margin_bottom = 205.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+bbcode_text = "[center]0[/center]"
+text = "0"
+
+[node name="gravePile" type="Node2D" parent="decks"]
+visible = false
+position = Vector2( 1750, 870 )
+scale = Vector2( 0.35, 0.5 )
+z_index = 24
+
+[node name="Sprite" type="Sprite" parent="decks/gravePile"]
+texture = ExtResource( 3 )
+
+[node name="desc" type="RichTextLabel" parent="decks/gravePile"]
+margin_left = -150.0
+margin_top = 100.0
+margin_right = 144.0
+margin_bottom = 251.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+
+[node name="count" type="RichTextLabel" parent="decks/gravePile"]
+margin_left = -140.0
+margin_top = -100.0
+margin_right = 156.0
+margin_bottom = 205.0
+mouse_filter = 2
+custom_fonts/normal_font = ExtResource( 2 )
+bbcode_enabled = true
+
+[node name="hand" type="Node2D" parent="decks"]
+position = Vector2( 830, 1000 )
+script = ExtResource( 4 )
+
+[node name="debugbutton" type="Button" parent="."]
+visible = false
+margin_left = 98.0
+margin_top = 1187.0
+margin_right = 370.0
+margin_bottom = 1303.0
+custom_styles/hover = SubResource( 2 )
+custom_styles/pressed = SubResource( 3 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="FPS" parent="." instance=ExtResource( 12 )]
+margin_top = 111.0
+margin_bottom = 262.0
+
+[node name="hero" type="Node2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="hpBar" type="Sprite" parent="hero"]
+self_modulate = Color( 0, 0, 0, 1 )
+position = Vector2( 772.5, 150 )
+scale = Vector2( 3.57031, 1 )
+texture = ExtResource( 14 )
+
+[node name="hp" type="RichTextLabel" parent="hero"]
+margin_left = 570.0
+margin_top = 100.0
+margin_right = 950.0
+margin_bottom = 255.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+
+[node name="enemy" type="Node2D" parent="."]
+script = ExtResource( 17 )
+
+[node name="hpBar" type="Sprite" parent="enemy"]
+position = Vector2( 1192.5, 150 )
+scale = Vector2( 3.35156, 1 )
+texture = ExtResource( 14 )
+
+[node name="hp" type="RichTextLabel" parent="enemy"]
+margin_left = 1000.0
+margin_top = 100.0
+margin_right = 1380.0
+margin_bottom = 255.0
+custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+
+[node name="energy" type="Node2D" parent="."]
+position = Vector2( 150, 820 )
+script = ExtResource( 18 )
+
+[node name="energyBg" type="Sprite" parent="energy"]
+self_modulate = Color( 0.0666667, 0.533333, 0.658824, 1 )
+scale = Vector2( 0.35, 0.35 )
+texture = ExtResource( 15 )
+
+[node name="energyAmt" type="RichTextLabel" parent="energy"]
+margin_left = -80.0
+margin_top = -40.0
+margin_right = 82.0
+margin_bottom = 115.0
+custom_fonts/normal_font = ExtResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]0/0[/center]"
+text = "0/0"
+
+[node name="combatbar" type="Sprite" parent="."]
+self_modulate = Color( 0.0431373, 0.0431373, 0.0431373, 1 )
+position = Vector2( 975, 700 )
+scale = Vector2( 1.8, 0.825 )
+z_index = -3
+texture = ExtResource( 3 )
+
+[node name="combatbarsprite" type="Sprite" parent="combatbar"]
+self_modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+position = Vector2( 0, 100 )
+z_index = -1
+texture = ExtResource( 3 )
+
+[node name="enemyCardBg" type="Sprite" parent="."]
+visible = false
+self_modulate = Color( 0.392157, 0.392157, 0.392157, 1 )
+position = Vector2( 975, 400 )
+scale = Vector2( 6.75, 6.75 )
+z_index = -4
+texture = ExtResource( 14 )
+
+[node name="lookDownTween" type="Tween" parent="."]
+
+[node name="lookUpTween" type="Tween" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="go_button/goclick" to="." method="_on_goclick_pressed"]
+[connection signal="pressed" from="lookdown" to="." method="_on_lookdown_pressed"]
+[connection signal="pressed" from="lookup" to="." method="_on_lookup_pressed"]
+[connection signal="pressed" from="debugbutton" to="." method="_on_debugbutton_pressed"]
+
+[editable path="go_button"]

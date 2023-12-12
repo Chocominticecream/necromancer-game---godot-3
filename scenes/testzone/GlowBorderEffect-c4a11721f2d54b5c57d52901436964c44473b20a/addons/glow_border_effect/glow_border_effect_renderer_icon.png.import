@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/glow_border_effect_renderer_icon.png-316863bf761e5c0c60dd5e2118762e3b.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://scenes/testzone/GlowBorderEffect-c4a11721f2d54b5c57d52901436964c44473b20a/addons/glow_border_effect/glow_border_effect_renderer_icon.png"
+dest_files=[ "res://.import/glow_border_effect_renderer_icon.png-316863bf761e5c0c60dd5e2118762e3b.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

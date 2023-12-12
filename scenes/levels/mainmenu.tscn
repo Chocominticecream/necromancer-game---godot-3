@@ -1,0 +1,158 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://assets/fonts/RobotoFlex-VariableFont_GRAD,XTRA,YOPQ,YTAS,YTDE,YTFI,YTLC,YTUC,opsz,slnt,wdth,wght.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://scenes/levels/mainmenu.gd" type="Script" id=2]
+[ext_resource path="res://assets/placeholders/square-128.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=14]
+size = 128
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=11]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 64
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="Shader" id=15]
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+void fragment(){
+    vec4 c = textureLod(SCREEN_TEXTURE, SCREEN_UV, 0.0).rgba;
+    c.r = 1.0 - c.r;
+    c.g = 1.0 - c.g;
+    c.b = 1.0 - c.b;
+    COLOR.rgba = c;
+     
+   }"
+
+[sub_resource type="ShaderMaterial" id=16]
+shader = SubResource( 15 )
+
+[node name="mainmenu" type="Control"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -960.0
+margin_top = -1080.0
+margin_right = 960.0
+mouse_filter = 2
+script = ExtResource( 2 )
+
+[node name="Label" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -581.0
+margin_top = -75.5
+margin_right = 581.0
+margin_bottom = 75.5
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 14 )
+text = "Necromancer game!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -218.5
+margin_top = -255.0
+margin_right = 218.5
+mouse_filter = 2
+
+[node name="startButton" type="Button" parent="VBoxContainer"]
+margin_right = 437.0
+margin_bottom = 76.0
+focus_neighbour_top = NodePath("../quitButton")
+mouse_filter = 1
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 1 )
+custom_styles/hover = SubResource( 8 )
+custom_styles/focus = SubResource( 9 )
+custom_styles/normal = SubResource( 5 )
+text = "start"
+
+[node name="optionsButton" type="Button" parent="VBoxContainer"]
+margin_top = 80.0
+margin_right = 437.0
+margin_bottom = 156.0
+mouse_filter = 1
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 3 )
+custom_styles/hover = SubResource( 10 )
+custom_styles/focus = SubResource( 11 )
+custom_styles/normal = SubResource( 6 )
+text = "options"
+
+[node name="quitButton" type="Button" parent="VBoxContainer"]
+margin_top = 160.0
+margin_right = 437.0
+margin_bottom = 236.0
+focus_neighbour_bottom = NodePath("../startButton")
+mouse_filter = 1
+custom_colors/font_color_focus = Color( 1, 1, 1, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 1, 1, 1, 1 )
+custom_fonts/font = SubResource( 2 )
+custom_styles/hover = SubResource( 12 )
+custom_styles/focus = SubResource( 13 )
+custom_styles/normal = SubResource( 7 )
+text = "quit"
+
+[node name="shader" type="ColorRect" parent="."]
+material = SubResource( 16 )
+margin_right = 2040.0
+margin_bottom = 1313.0
+mouse_filter = 2
+
+[node name="background" type="Sprite" parent="."]
+position = Vector2( 868, 43 )
+scale = Vector2( 30, 30 )
+z_index = -5
+texture = ExtResource( 3 )
+
+[connection signal="pressed" from="VBoxContainer/startButton" to="." method="_on_startButton_pressed"]
+[connection signal="pressed" from="VBoxContainer/quitButton" to="." method="_on_quitButton_pressed"]
