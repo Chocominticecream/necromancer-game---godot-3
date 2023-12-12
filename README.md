@@ -6,3 +6,6 @@
 
  TO RUN:
  simply download godot 3.4.4+ and then double click on the project.godot file to run the project
+
+ TODO:
+ create itch io version of the game so that people can test it for themselves
